@@ -1,4 +1,4 @@
-package com.example;
+package com.example.pdf.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -17,6 +17,7 @@ import java.io.InputStream;
  * Created by mike on 8/2/16.
  */
 @RestController
+//@RequestMapping("/api")
 public class PdfController {
   private PdfService pdfService;
 
@@ -25,7 +26,7 @@ public class PdfController {
     this.pdfService = pdfService;
   }
 
-  @RequestMapping(value = "/pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+  @RequestMapping(value = "/api/pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
   public ResponseEntity<InputStreamResource> get(@RequestParam String html) throws IOException {
     InputStream inputStream = pdfService.generate(html);
     return ResponseEntity
